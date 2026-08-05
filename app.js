@@ -3,6 +3,7 @@ const express = require("express");
 const path = require("path");
 const helmet = require("helmet");
 const compression = require("compression");
+const expressLayouts = require("express-ejs-layouts");
 const indexRouter = require("./routes/index");
 const { logInfo, logError } = require("./lib/logger");
 
@@ -14,6 +15,9 @@ app.set("trust proxy", 1);
 
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
+
+// Views render into views/layout.ejs, which holds the full document shell.
+app.use(expressLayouts);
 
 // Security headers. CSP is tuned for this page: styles + fonts come from Google
 // Fonts, and the paper-grain background is an inline data: URL in the CSS.
