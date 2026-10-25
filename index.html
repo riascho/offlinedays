@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- GitHub Pages can't set response headers, so the CSP lives here. It
+         mirrors the old helmet config; form-action allows only the n8n host. -->
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; script-src 'self'; object-src 'none'; base-uri 'self'; form-action https://riascho.app.n8n.cloud/webhook/waitlist"
+    />
+    <title>The Offline Days</title>
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="images/the_offline_days_logo.svg"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="images/favicon-32x32.png"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Inter:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+    <script src="js/main.js" defer></script>
+  </head>
+  <body>
+    <header class="site-header">
+      <nav class="site-nav">
+        <a class="site-nav__brand" href="./">
+          <img
+            class="site-nav__logo"
+            src="images/the_offline_days_logo.svg"
+            alt="logo"
+            width="56"
+            height="56"
+          />
+          <span>The Offline Days</span>
+        </a>
+      </nav>
+    </header>
+    <main>
+      <section class="hero">
+        <div class="hero__scrim"></div>
+
+        <div class="hero__content">
+          <article class="card concept fade-up">
+            <h1 class="concept__title">Success isn't built on burnout.</h1>
+            <p>
+              📵 In a world where we are constantly "online" we need better ways
+              to recover from technology.
+            </p>
+            <p>
+              🌿 I am creating exclusive retreat experiences focused on
+              <em>digital wellbeing</em>,
+              <em>uninterrupted social connection</em> and
+              <em>outdoor activities</em>.
+            </p>
+            <p>
+              🤝 No quiet isolation — just nature, genuine human interaction,
+              active adventure and real life as it was meant to be.
+            </p>
+          </article>
+
+          <!-- n8n redirects back with ?signup=success|exists|error; js/main.js
+               shows the matching block below. -->
+          <article class="card cta fade-up fade-up--delay">
+            <p id="signup-success" class="cta__success" hidden>
+              You're on the list. I'll be in touch soon. 🎉
+            </p>
+            <p id="signup-exists" class="cta__success" hidden>
+              You're already on the list. 🙏 I'll be in touch soon. 🌿
+            </p>
+            <div id="signup-form">
+              <h2 class="cta__heading">
+                Join the waitlist for my first retreat
+              </h2>
+              <p id="signup-error" class="cta__error" hidden></p>
+              <form
+                class="cta__form"
+                action="https://riascho.app.n8n.cloud/webhook/waitlist"
+                method="POST"
+              >
+                <input
+                  type="email"
+                  name="email"
+                  class="cta__input"
+                  placeholder="Enter your email address"
+                  maxlength="254"
+                  required
+                />
+                <!-- Honeypot: n8n silently drops submissions where this is filled. -->
+                <div class="cta__hp" aria-hidden="true">
+                  <label
+                    >Leave this empty
+                    <input
+                      type="text"
+                      name="website"
+                      tabindex="-1"
+                      autocomplete="off"
+                  /></label>
+                </div>
+                <button type="submit" class="cta__button">
+                  Sign Up &rarr;
+                </button>
+              </form>
+              <p class="cta__microcopy">No spam, just updates.</p>
+            </div>
+          </article>
+        </div>
+      </section>
+    </main>
+    <footer>
+      <p>&copy; <span id="year">2026</span> The Offline Days</p>
+    </footer>
+  </body>
+</html>

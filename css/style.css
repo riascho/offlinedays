@@ -26,6 +26,12 @@
   padding: 0;
 }
 
+/* Signup states are toggled with the hidden attribute in js/main.js. Without
+   this, rules like .cta__form { display: flex } would override it. */
+[hidden] {
+  display: none !important;
+}
+
 body {
   font-family: var(--sans);
   font-weight: 400;
@@ -91,7 +97,7 @@ main {
 .hero {
   position: relative;
   flex: 1;
-  background-image: url("/images/balcony.png");
+  background-image: url("../images/balcony.png");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -246,6 +252,15 @@ main {
   background: #244636;
   transform: translateY(-2px);
   box-shadow: var(--shadow-lift);
+}
+
+/* Honeypot field: off-screen for people, still filled in by naive bots. */
+.cta__hp {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
 }
 
 .cta__microcopy {
