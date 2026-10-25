@@ -4,10 +4,11 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- GitHub Pages can't set response headers, so the CSP lives here. It
-         mirrors the old helmet config; form-action allows only the n8n host. -->
+         mirrors the old helmet config. form-action also covers redirects after
+         submit, so 'self' is needed for n8n's redirect back to this site. -->
     <meta
       http-equiv="Content-Security-Policy"
-      content="default-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; script-src 'self'; object-src 'none'; base-uri 'self'; form-action https://riascho.app.n8n.cloud/webhook/waitlist"
+      content="default-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; script-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self' https://riascho.app.n8n.cloud/webhook/waitlist"
     />
     <title>The Offline Days</title>
     <link
